@@ -1,0 +1,22 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.button-container {
+    position: fixed;
+    top: 20px;
+    right: 15px;
+}
+
+.button {
+    padding: 10px;
+    font-size: 16px;
+}
