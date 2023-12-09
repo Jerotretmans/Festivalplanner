@@ -26,6 +26,38 @@
             padding: 10px;
             font-size: 16px;
         }
+
+        .timetable {
+  max-width: 800px;
+  margin-top: 50px;
+  margin-left: 10px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.stage {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-right: 1px solid #fff;
+}
+
+.acts-container {
+  display: flex;
+  flex-direction: row; /* Ensure acts are displayed horizontally */
+}
+
+.act {
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-right: 5px; /* Add some spacing between acts */
+}
+
     </style>
 </head>
 <body>
@@ -37,10 +69,31 @@
             <input type="submit" class="button" value="Homepage">
         </form>
 
-        <form action="/defqonfriday" method="post">
-            <input type="submit" class="button" value="Friday">
-        </form>
-    </div>
-
+        <div class="timetable">
+            {% set stages = {} %}
+            {% for event in events %}
+                <!-- Check if stage exists in stages dictionary -->
+                {% if not stages.get(event.stage) %}
+                    <!-- If stage doesn't exist, create it in the dictionary -->
+                    {% set _ = stages.update({event.stage: []}) %}
+                {% endif %}
+                <!-- Add the current act to the stage in the dictionary -->
+                {% set _ = stages[event.stage].append(event.act) %}
+            {% endfor %}
+        
+            <!-- Display the stages and acts -->
+            {% for stage, acts in stages.items() %}
+                <!-- Output stage header -->
+                <div class="stage">{{ stage }}</div>
+                <!-- Output acts for the stage horizontally -->
+                <div class="acts-container">
+                    {% for act in acts %}
+                        <div class="act">{{ act }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        
+        
 </body>
 </html>

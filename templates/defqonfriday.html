@@ -1,28 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Your head content here -->
 </head>
 <body>
 
     <h2>Festival Timetable</h2>
-
-    <table>
-        <tr>
-            <th>Time</th>
-            <th>Event</th>
-            <th>Location</th>
-            <!-- Add more headers as needed -->
-        </tr>
-        {% for act in Defqon_1_2023_Timetable_friday %}
-            <tr>
-                <td>{{ event.stage_name }}</td>
-                <td>{{ event.start_time }}</td>
-                <td>{{ event.end_time }}</td>
-                <td>{{ event.act_name }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
 </body>
 </html>
